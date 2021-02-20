@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def under_stock_limit?
-    current_user.stocks.count < 10
+    stocks.count < 10
   end
 
   def can_track_stock?(ticker_symbol)
