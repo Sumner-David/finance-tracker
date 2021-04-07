@@ -6,4 +6,27 @@ class UsersController < ApplicationController
   def friends_list
     @friends = current_user.friends
   end
+
+  def search_friend
+    if params[:friend].present?
+      @friend = params[:friend]
+
+      if @friend
+        respond_to do |format|
+          format.js { render partial: 'users/friend_result'}
+        end
+      else
+        respond_to do |format|
+          flash.now[:alert] = "Couldnt find a Friend"
+          format.js { render partial: 'users/friend_result' }
+        end
+      end
+
+    else
+      respond_to do |format|
+        flash.now[:alert] = "Please enter a friend name"
+        format.js { render partial: 'users/friend_result' }
+      end
+    end
+  end
 end
