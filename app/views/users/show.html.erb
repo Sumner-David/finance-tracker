@@ -19,7 +19,7 @@
             <% if current_user.not_friends_with?(@user.id) %>
               <%= link_to 'Follow friend?', friendships_path(friend: @user), class: 'btn btn-sm btn-success', method: :post %>
             <% else %>
-              <span class="badge badge-secondary">
+            <span class="badge badge-secondary">
                 You are Friends
               </span>
             <% end %>
